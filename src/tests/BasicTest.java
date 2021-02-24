@@ -8,7 +8,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 
+import pages.AuthPage;
 import pages.LocationPopupPage;
+import pages.LoginPage;
+import pages.ProfilePage;
 
 public abstract class BasicTest {
 
@@ -19,6 +22,9 @@ public abstract class BasicTest {
 	protected String email;
 	protected String password;
 	protected LocationPopupPage locationPopupPage;
+	protected ProfilePage profilePage;
+	protected LoginPage loginPage;
+	protected AuthPage authPage;
 
 	@BeforeClass
 	public void setup() {
@@ -32,11 +38,14 @@ public abstract class BasicTest {
 		this.driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		this.driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-		this.locationPopupPage = new LocationPopupPage(driver, waiter, js);
-
 		this.baseURL = "http://demo.yo-meals.com";
 		this.email = "customer@dummyid.com";
 		this.password = "12345678a";
+
+		this.locationPopupPage = new LocationPopupPage(driver, waiter, js);
+		this.profilePage = new ProfilePage(driver, waiter, js);
+		this.loginPage = new LoginPage(driver, waiter, js);
+		this.authPage = new AuthPage(driver, waiter, js);
 
 	}
 }
