@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class SearchTest extends BasicTest {
 
 	@Test(priority = 0)
-	public void searchResultsTest() throws IOException {
+	public void searchResultsTest() throws IOException, InterruptedException {
 		SoftAssert sa = new SoftAssert();
 
 		this.driver.get(this.baseURL + "/meals");
@@ -25,7 +26,7 @@ public class SearchTest extends BasicTest {
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 		XSSFSheet sheet = wb.getSheet("Meal Search Results");
 
-		for (int i = 1; i <= 7; i++) {
+		for (int i = 1; i < 7; i++) {
 			XSSFRow row = sheet.getRow(i);
 
 			String location = row.getCell(0).getStringCellValue();
@@ -42,7 +43,8 @@ public class SearchTest extends BasicTest {
 			for (int j = 3; j < row.getLastCellNum(); j++) {
 
 				String proudcts = row.getCell(j).getStringCellValue();
-				sa.assertTrue(this.searchResultPage.namesOfAllMeals().get(i).contains(proudcts), "[ERROR]");
+				sa.assertTrue(this.searchResultPage.namesOfAllMeals().contains(proudcts), "[ERROR]");
+				Thread.sleep(2000);
 
 			}
 

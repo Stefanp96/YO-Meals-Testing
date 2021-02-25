@@ -15,6 +15,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ISuiteResult;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -70,20 +71,16 @@ public abstract class BasicTest {
 	}
 
 	@AfterMethod
-	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
-
-		if (testResult.getStatus() == ITestResult.FAILURE) {
-
-			LocalDateTime DateObj = LocalDateTime.now();
-			DateTimeFormatter dateformated = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-
-			String date = DateObj.format(dateformated);
-
-			File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(scrFile, new File("screenshoot\\" + date + ".jpg"));
+	public void afterTest(ITestResult result) throws Exception {
+		String testTime = new SimpleDateFormat("yyyyMMddHHmmss'.png'").format(new Date());
+		if (result.getStatus() == ITestResult.FAILURE) {
+			TakesScreenshot ts = (TakesScreenshot) driver;
+			File ss = ts.getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(ss, new File("screenshots/" + testTime));
 		}
-		driver.manage().deleteAllCookies();
 
+		this.driver.manage().deleteAllCookies();
+		this.driver.navigate().refresh();
 	}
 
 	@AfterClass
