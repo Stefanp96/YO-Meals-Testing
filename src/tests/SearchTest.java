@@ -39,6 +39,7 @@ public class SearchTest extends BasicTest {
 
 			sa.assertEquals(this.searchResultPage.NumberOfSeacrhResults(), numOfResults,
 					"[ERROR] results fail to match");
+			Thread.sleep(2000);
 
 			for (int j = 3; j < row.getLastCellNum(); j++) {
 

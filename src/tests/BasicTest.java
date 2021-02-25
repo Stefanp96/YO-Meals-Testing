@@ -71,12 +71,12 @@ public abstract class BasicTest {
 	}
 
 	@AfterMethod
-	public void afterTest(ITestResult result) throws Exception {
+	public void takeScreenShot(ITestResult result) throws Exception {
 		String testTime = new SimpleDateFormat("yyyyMMddHHmmss'.png'").format(new Date());
 		if (result.getStatus() == ITestResult.FAILURE) {
 			TakesScreenshot ts = (TakesScreenshot) driver;
-			File ss = ts.getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(ss, new File("screenshots/" + testTime));
+			File file = ts.getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(file, new File("screenshot/" + testTime));
 		}
 
 		this.driver.manage().deleteAllCookies();
