@@ -69,8 +69,7 @@ public abstract class BasicTest {
 		this.searchResultPage = new SearchResultPage(driver, waiter, js);
 	}
 
-	@AfterMethod()
-	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
+	/*public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
 
 		if (testResult.getStatus() == ITestResult.FAILURE) {
 
@@ -84,7 +83,7 @@ public abstract class BasicTest {
 		}
 		driver.manage().deleteAllCookies();
 
-	}
+	}*/
 
 	@AfterClass
 	public void clear() {
