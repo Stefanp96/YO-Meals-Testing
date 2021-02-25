@@ -42,7 +42,7 @@ public class SearchTest extends BasicTest {
 			for (int j = 3; j < row.getLastCellNum(); j++) {
 
 				String proudcts = row.getCell(j).getStringCellValue();
-				sa.assertTrue(this.searchResultPage.namesOfAllMeals().contains(proudcts), "[ERROR]");
+				sa.assertTrue(this.searchResultPage.namesOfAllMeals().get(i).contains(proudcts), "[ERROR]");
 
 			}
 
