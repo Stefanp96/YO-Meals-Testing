@@ -26,8 +26,6 @@ public class ProfileTest extends BasicTest {
 		this.profilePage.changeProfile("Stefan", "Pavlovic", "Nis", "234", "324", "231", "3920", "42673");
 		this.profilePage.getSaveButton().click();
 
-		driver.findElement(By.xpath("//*[@class=\"content\"]")).getText();
-
 		Assert.assertTrue(this.notificationSistemPage.getMessageText().contains("Setup Successful"),
 				"[ERROR]: update of profile inforamtion fail");
 
