@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeClass;
 import pages.AuthPage;
 import pages.LocationPopupPage;
 import pages.LoginPage;
+import pages.NotificationSistemPage;
 import pages.ProfilePage;
 
 public abstract class BasicTest {
@@ -25,6 +26,7 @@ public abstract class BasicTest {
 	protected ProfilePage profilePage;
 	protected LoginPage loginPage;
 	protected AuthPage authPage;
+	protected NotificationSistemPage notificationSistemPage;
 
 	@BeforeClass
 	public void setup() {
@@ -46,6 +48,6 @@ public abstract class BasicTest {
 		this.profilePage = new ProfilePage(driver, waiter, js);
 		this.loginPage = new LoginPage(driver, waiter, js);
 		this.authPage = new AuthPage(driver, waiter, js);
-
+		this.notificationSistemPage= new NotificationSistemPage(driver, waiter, js);
 	}
 }
