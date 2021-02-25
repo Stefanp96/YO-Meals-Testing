@@ -18,7 +18,7 @@ public class MealPage extends BasicPage {
 
 	}
 
-	public WebElement getAddtoFavouriteButton() {
+	public WebElement getAddtoFavoriteButton() {
 		return this.driver.findElement(By.xpath("//*[@class=\"product-detail-image\"]/a"));
 
 	}
@@ -36,6 +36,10 @@ public class MealPage extends BasicPage {
 		this.getQuantity().sendKeys(Keys.CONTROL + "a" + Keys.DELETE);
 		this.getQuantity().sendKeys(quantity);
 		this.getAddtoCartButton().click();
+	}
+
+	public void addProductToFavorite() {
+		this.getAddtoFavoriteButton().click();
 	}
 
 }
