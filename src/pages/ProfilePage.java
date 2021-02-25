@@ -90,18 +90,19 @@ public class ProfilePage extends BasicPage {
 
 	}
 
-	public void changeProfile(String firstName, String lastName, String address, String phoneNo, String ZipCode,
-			String countyValue,String stateValue,String cityValue) {
+	public void changeProfile(String firstName, String lastName, String address, String phoneNo, String zipCode,
+			String countyValue, String stateValue, String cityValue) throws InterruptedException {
 		this.getFirstName().sendKeys(firstName);
 		this.getLastName().sendKeys(lastName);
 		this.getAddress().sendKeys(address);
 		this.getPhoneNo().sendKeys(phoneNo);
-		this.getZipCode().sendKeys(ZipCode);
+		this.getZipCode().sendKeys(zipCode);
 		this.getCounty().selectByValue(countyValue);
+		Thread.sleep(2000);
 		this.getState().selectByValue(stateValue);
+		Thread.sleep(2000);
 		this.getCity().selectByValue(cityValue);
-		
-		
+
 	}
 
 }
