@@ -28,8 +28,12 @@ public class MealPage extends BasicPage {
 	}
 
 	public void addProductToCart(String name) {
-		driver.findElement(By.linkText(name)).click();
-		;
+		this.driver.findElement(By.linkText(name)).click();
+		
+	}
+	
+	public void clearAll () {
+		this.driver.findElement(By.xpath("//*[@class=\"cart-head\"]/a[2]"));
 	}
 
 	public void addtoCart(String quantity) {

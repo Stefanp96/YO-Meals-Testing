@@ -29,6 +29,7 @@ public abstract class BasicTest {
 	protected AuthPage authPage;
 	protected NotificationSistemPage notificationSistemPage;
 	protected MealPage mealPage;
+
 	@BeforeClass
 	public void setup() {
 		System.setProperty("webdriver.chrome.driver", "C:\\ec\\Test\\driver\\chromedriver.exe");
@@ -49,9 +50,8 @@ public abstract class BasicTest {
 		this.profilePage = new ProfilePage(driver, waiter, js);
 		this.loginPage = new LoginPage(driver, waiter, js);
 		this.authPage = new AuthPage(driver, waiter, js);
-		this.notificationSistemPage= new NotificationSistemPage(driver, waiter, js);
-		this.mealPage= new MealPage(driver, waiter, js);
+		this.notificationSistemPage = new NotificationSistemPage(driver, waiter, js);
+		this.mealPage = new MealPage(driver, waiter, js);
 	}
-	
-	
+
 }
